@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniSystem.DataModel.Validations;
 
 namespace UniSystem.DataModel
 {
-    public class Student
+    public partial class Student  
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -25,6 +26,8 @@ namespace UniSystem.DataModel
         public string Email { get; set; }
         [Required]
         [StringLength(500)]
-        public string Address { get; set; }
+        public string Address { get; set; }        
     }
+
+   
 }
