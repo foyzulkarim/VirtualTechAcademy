@@ -12,7 +12,7 @@ namespace UniSystem.DataModel
         public IEnumerable<ValidationResult> Validate(ValidationContext context)
         {
             List<ValidationResult> validationResults = new List<ValidationResult>();
-            validationResults.Add(new ValidationResult("Test"));
+         //   validationResults.Add(new ValidationResult("Test"));
             return validationResults;
         }
     }

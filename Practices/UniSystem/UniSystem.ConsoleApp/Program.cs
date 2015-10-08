@@ -23,16 +23,31 @@ namespace UniSystem.ConsoleApp
             Console.WriteLine("Phone: ");
             student.Phone = "te";
             Console.WriteLine("Address: ");
-           student.Address = "te";
+            student.Address = "te";
             ValidationContext context = new ValidationContext(student);
             List<ValidationResult> validationResults = new List<ValidationResult>();
             bool tryValidateObject = Validator.TryValidateObject(student, context, validationResults, true);
-            
-            db.Students.Add(student);
-           
-            IEnumerable<DbEntityValidationResult> dbEntityValidationResults = db.GetValidationErrors();
-            int saveChanges = db.SaveChanges();
-            Console.WriteLine(saveChanges);
+            if (tryValidateObject)
+            {
+                db.Students.Add(student);
+                var dbEntityValidationResults = db.GetValidationErrors().ToList();
+                if (dbEntityValidationResults.Count > 0)
+                {
+                    foreach (DbEntityValidationResult result in dbEntityValidationResults)
+                    {
+                        foreach (DbValidationError error in result.ValidationErrors)
+                        {
+                            Console.WriteLine(error.ErrorMessage);
+                        }
+                    }
+                }
+                else
+                {
+                    int saveChanges = db.SaveChanges();
+                    Console.WriteLine(saveChanges);
+                }
+
+            }
         }
     }
 }
