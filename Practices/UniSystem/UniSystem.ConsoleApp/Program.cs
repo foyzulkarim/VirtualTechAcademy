@@ -14,7 +14,8 @@ namespace UniSystem.ConsoleApp
         static void Main(string[] args)
         {
             UniSystemDbContext db = new UniSystemDbContext();
-          
+            Department department = new Department() {Name = "CSE"};
+
             Student student = new Student();
             Console.WriteLine("Enter a new student: ");
             Console.WriteLine("Name: ");
@@ -22,9 +23,11 @@ namespace UniSystem.ConsoleApp
             Console.WriteLine("Email: ");
             student.Email = "te";
             Console.WriteLine("Phone: ");
-            student.Phone = "1234";
+            student.Phone = DateTime.Now.Ticks.ToString();
             Console.WriteLine("Address: ");
             student.Address = "te";
+            student.Department = department;
+
             ValidationContext context = new ValidationContext(student);
             List<ValidationResult> validationResults = new List<ValidationResult>();
             bool tryValidateObject = Validator.TryValidateObject(student, context, validationResults, true);
