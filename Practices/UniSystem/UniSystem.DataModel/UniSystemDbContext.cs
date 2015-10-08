@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
@@ -20,8 +21,17 @@ namespace UniSystem.DataModel
 
         protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
         {
-            var x = entityEntry.Entity;
-            return base.ValidateEntity(entityEntry, items);
+            IDbValidableObject entity = entityEntry.Entity as IDbValidableObject;
+            var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
+            var validationResults = entity.Validate(this);
+            if (validationResults.Count>0)
+            {
+                foreach (DbValidationError error in validationResults)
+                {
+                    result.ValidationErrors.Add(error);
+                }
+            }
+            return result.ValidationErrors.Count>0 ? result : base.ValidateEntity(entityEntry, items);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

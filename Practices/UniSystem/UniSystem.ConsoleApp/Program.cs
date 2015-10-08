@@ -21,7 +21,7 @@ namespace UniSystem.ConsoleApp
             Console.WriteLine("Email: ");
             student.Email = "te";
             Console.WriteLine("Phone: ");
-            student.Phone = "te";
+            student.Phone = "1234";
             Console.WriteLine("Address: ");
             student.Address = "te";
             ValidationContext context = new ValidationContext(student);
@@ -30,23 +30,16 @@ namespace UniSystem.ConsoleApp
             if (tryValidateObject)
             {
                 db.Students.Add(student);
-                var dbEntityValidationResults = db.GetValidationErrors().ToList();
-                if (dbEntityValidationResults.Count > 0)
-                {
-                    foreach (DbEntityValidationResult result in dbEntityValidationResults)
-                    {
-                        foreach (DbValidationError error in result.ValidationErrors)
-                        {
-                            Console.WriteLine(error.ErrorMessage);
-                        }
-                    }
-                }
-                else
+                try
                 {
                     int saveChanges = db.SaveChanges();
                     Console.WriteLine(saveChanges);
                 }
-
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                }
+                Console.ReadLine();
             }
         }
     }
