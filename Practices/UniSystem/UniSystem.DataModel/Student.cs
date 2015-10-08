@@ -9,11 +9,8 @@ using UniSystem.DataModel.Validations;
 
 namespace UniSystem.DataModel
 {
-    public partial class Student  
+    public partial class Student  : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        public Guid Id { get; set; }
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -27,8 +24,11 @@ namespace UniSystem.DataModel
         public string Email { get; set; }
         [Required]
         [StringLength(500)]
-        public string Address { get; set; }        
-    }
+        public string Address { get; set; }
 
-   
+        [Required]
+        [ForeignKey("Department")]
+        public Guid DepartmentId { get; set; }
+        public virtual Department Department { get; set; }
+    }
 }

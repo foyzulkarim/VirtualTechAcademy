@@ -25,16 +25,7 @@ namespace UniSystem.DataModel.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
-            //
-
-            context.Students.AddOrUpdate(x => x.Email, new Student()
-            {
-                //Id = Guid.NewGuid(),
-                Name = "Foyzul Karim",
-                Email = "foyzulkarim@gmail.com",
-                Phone = "1234",
-                Address = "Dhaka"
-            });
+            //         
         }
     }
 }

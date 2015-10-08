@@ -14,6 +14,7 @@ namespace UniSystem.ConsoleApp
         static void Main(string[] args)
         {
             UniSystemDbContext db = new UniSystemDbContext();
+          
             Student student = new Student();
             Console.WriteLine("Enter a new student: ");
             Console.WriteLine("Name: ");

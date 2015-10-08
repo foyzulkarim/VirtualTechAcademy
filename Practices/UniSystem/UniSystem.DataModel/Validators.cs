@@ -18,8 +18,14 @@ namespace UniSystem.DataModel
             {
                 yield return new ValidationResult("Duplicate phone: " + Phone, new[] { "Phone" });
             }
-        }
+        }        
+    }
 
-        
+    public partial class Department : IValidatableObject
+    {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 }
