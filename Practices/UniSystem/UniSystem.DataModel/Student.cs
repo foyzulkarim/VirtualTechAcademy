@@ -22,6 +22,7 @@ namespace UniSystem.DataModel
         public string Phone { get; set; }
         [Required]
         [StringLength(30)]
+        [DataType(DataType.EmailAddress)]
         [Index("Ix_UniqueEmail", IsUnique = true)]
         public string Email { get; set; }
         [Required]

@@ -7,30 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UniSystem.DataModel
-{
-    public interface IDbValidableObject
-    {
-        List<DbValidationError> Validate(UniSystemDbContext dbContext);
-    }
-
-    public partial class Student : IValidatableObject, IDbValidableObject
+{    
+    public partial class Student : IValidatableObject
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext context)
         {
-            List<ValidationResult> validationResults = new List<ValidationResult>();
-         //   validationResults.Add(new ValidationResult("Test"));
-            return validationResults;
-        }
-
-        public List<DbValidationError> Validate(UniSystemDbContext dbContext)
-        {
-            var validationResults = new List<DbValidationError>();
-
-            if (dbContext.Students.FirstOrDefault(x=>x.Phone==Phone)!=null)
+            const string key = "DbContext";
+            UniSystemDbContext db = context.Items.Count == 0 ? null:  context.Items.ContainsKey(key)==false ? null : context.Items[key] as UniSystemDbContext;
+            if (db?.Students.FirstOrDefault(x => x.Phone == Phone) != null)
             {
-                validationResults.Add(new DbValidationError("Phone", "Duplicate phone: " + Phone));
+                yield return new ValidationResult("Duplicate phone: " + Phone, new[] { "Phone" });
             }
-            return validationResults;
         }
+
+        
     }
 }
