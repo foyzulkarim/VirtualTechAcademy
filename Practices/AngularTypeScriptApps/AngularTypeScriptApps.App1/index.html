@@ -4,9 +4,9 @@
     <title></title>
 	<meta charset="utf-8" />
 </head>
-<body ng-controller="HomeController">
+<body ng-controller="HomeController as vm">
 <span> Hello there</span>
-    <button ng-click="clickme()">Click Me</button>
+    <button ng-click="vm.clickme()">Click Me</button>
     
 <script src="Scripts/angular.js"></script>
     <script src="app/app.js"></script>
