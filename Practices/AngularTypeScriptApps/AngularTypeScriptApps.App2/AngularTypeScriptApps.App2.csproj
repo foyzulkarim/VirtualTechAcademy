@@ -68,6 +68,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\student\student-list\student-list.controller.js" />
+    <Content Include="app\student\student-list\student-list.service.js" />
+    <Content Include="app\student\student.config.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -881,6 +884,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
+    <Content Include="views\home\home.tpl.html" />
+    <Content Include="views\student\student-list\student-list.tpl.html" />
     <Content Include="Web.config" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
@@ -889,7 +894,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.ts" />
-    <TypeScriptCompile Include="app\dashboard\dashboard.service.ts" />
     <TypeScriptCompile Include="app\student\student-list\student-list.controller.ts" />
     <TypeScriptCompile Include="app\student\student-list\student-list.service.ts" />
     <TypeScriptCompile Include="app\student\student.config.ts" />
@@ -905,9 +909,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\student\student-detail\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

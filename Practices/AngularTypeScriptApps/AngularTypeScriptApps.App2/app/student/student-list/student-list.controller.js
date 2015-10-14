@@ -3,13 +3,16 @@ var App;
     var StudentListController = (function () {
         function StudentListController(studentListService) {
             this.studentListService = studentListService;
+            this.students = [];
+            this.heading = 'test';
             this.getPosts();
         }
-        StudentListController.prototype.successCallback = function (result) {
-            return null;
-        };
         StudentListController.prototype.getPosts = function () {
-            this.studentListService.get().then(this.successCallback);
+            var self = this;
+            self.studentListService.get().then(function (result) {
+                self.students = result;
+                self.heading += ' ' + self.students.length;
+            });
         };
         return StudentListController;
     })();
@@ -17,4 +20,3 @@ var App;
     StudentListController.$inject = ['StudentListService'];
     angular.module('app').controller('StudentListController', StudentListController);
 })(App || (App = {}));
-//# sourceMappingURL=student-list.controller.js.map

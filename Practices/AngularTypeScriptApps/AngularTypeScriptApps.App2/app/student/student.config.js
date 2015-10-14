@@ -5,11 +5,8 @@ var App;
             $routeProvider
                 .when('/student-list', {
                 templateUrl: 'views/student/student-list/student-list.tpl.html',
-                controller: 'StudentListController'
-            })
-                .when('/student-manage', {
-                templateUrl: 'views/student/student-manage/student-manage.tpl.html',
-                controller: 'StudentManageController'
+                controller: 'StudentListController',
+                controllerAs: 'vm'
             });
         }
         return StudentConfig;
@@ -18,4 +15,3 @@ var App;
     StudentConfig.$inject = ['$routeProvider'];
     angular.module('app').config(StudentConfig);
 })(App || (App = {}));
-//# sourceMappingURL=student.config.js.map

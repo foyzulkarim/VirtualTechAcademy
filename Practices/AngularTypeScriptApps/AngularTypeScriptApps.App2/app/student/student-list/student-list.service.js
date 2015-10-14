@@ -24,4 +24,3 @@ var App;
     StudentListService.$inject = ['$q'];
     angular.module('app').service('StudentListService', StudentListService);
 })(App || (App = {}));
-//# sourceMappingURL=student-list.service.js.map

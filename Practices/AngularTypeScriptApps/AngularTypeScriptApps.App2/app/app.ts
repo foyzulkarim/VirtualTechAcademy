@@ -1,8 +1,14 @@
-﻿module App {
-    // OOP mental context
-    class Config {
-        constructor() {
+﻿/// <reference path="../scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="../scripts/typings/angularjs/angular-route.d.ts" />
+
+module App {
+    "use strict"; // OOP mental context
+    export class Config {
+        constructor($routeProvider : ng.route.IRouteProvider) {
             console.log('I am in config constructor.');
+            $routeProvider.when('/', {
+                template:'views/home/home.tpl.html'
+            });
         }
     }
 
@@ -12,13 +18,15 @@
         }
 
         clickme(): void {
-            console.log('I am in home controller click me method.');                        
+            alert('i m clicked. ');
         }
     }
 
 
     // angular mental context
-    angular.module('app', []);
+    angular.module('app', ['ngRoute']);
+
+    Config.$inject = ['$routeProvider'];
     angular.module('app').config(Config);
     angular.module('app').controller('HomeController', HomeController);
 }

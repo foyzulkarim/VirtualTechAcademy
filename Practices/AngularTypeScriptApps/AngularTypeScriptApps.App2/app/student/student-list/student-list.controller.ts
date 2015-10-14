@@ -1,20 +1,22 @@
 ﻿module App {
     export class StudentListController {
-        data: Object[];
+        students: Object[];
+        heading: string;             
         studentListService: StudentListService;
+
         constructor(studentListService: App.StudentListService) {
             this.studentListService = studentListService;
+            this.students = [];
+            this.heading = 'test';
             this.getPosts();
         }
 
-        
-        successCallback(result: Object[]): Object {
-            return null;
-        }
-
         getPosts(): void {
-                
-            this.studentListService.get().then(this.successCallback);
+            var self = this;
+            self.studentListService.get().then((result: Object[]): void => {
+                self.students = result;
+                self.heading += ' ' + self.students.length;
+            });
         }
     }
 
