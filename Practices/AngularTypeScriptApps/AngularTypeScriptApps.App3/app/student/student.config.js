@@ -15,4 +15,3 @@ var App;
     StudentConfig.$inject = ['$routeProvider'];
     angular.module('app').config(StudentConfig);
 })(App || (App = {}));
-//# sourceMappingURL=student.config.js.map
