@@ -1,10 +1,12 @@
-var App;
-(function (App) {
-    var StudentListService = (function () {
-        function StudentListService($q) {
+﻿module App {
+    export class StudentListService {
+        private qService: ng.IQService;
+
+        constructor($q: ng.IQService) {
             this.qService = $q;
         }
-        StudentListService.prototype.get = function () {
+
+        get(): ng.IPromise<Object[]> {
             var self = this;
             var deffered = self.qService.defer();
             var data = [
@@ -17,11 +19,9 @@ var App;
             ];
             deffered.resolve(data);
             return deffered.promise;
-        };
-        return StudentListService;
-    })();
-    App.StudentListService = StudentListService;
+        }
+    }
+
     StudentListService.$inject = ['$q'];
     angular.module('app').service('StudentListService', StudentListService);
-})(App || (App = {}));
-//# sourceMappingURL=student-list.service.js.map
+}

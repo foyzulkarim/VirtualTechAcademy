@@ -1,23 +1,25 @@
-var App;
-(function (App) {
-    var StudentListController = (function () {
-        function StudentListController(studentListService) {
+﻿module App {
+    export class StudentListController {
+        students: Object[];
+        heading: string;             
+        studentListService: StudentListService;
+
+        constructor(studentListService: App.StudentListService) {
             this.studentListService = studentListService;
             this.students = [];
             this.heading = 'test';
             this.getPosts();
         }
-        StudentListController.prototype.getPosts = function () {
+
+        getPosts(): void {
             var self = this;
-            self.studentListService.get().then(function (result) {
+            self.studentListService.get().then((result: Object[]): void => {
                 self.students = result;
                 self.heading += ' ' + self.students.length;
             });
-        };
-        return StudentListController;
-    })();
-    App.StudentListController = StudentListController;
+        }
+    }
+
     StudentListController.$inject = ['StudentListService'];
     angular.module('app').controller('StudentListController', StudentListController);
-})(App || (App = {}));
-//# sourceMappingURL=student-list.controller.js.map
+}

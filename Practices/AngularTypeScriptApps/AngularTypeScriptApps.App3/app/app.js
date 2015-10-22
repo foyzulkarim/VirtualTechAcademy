@@ -7,7 +7,7 @@ var App;
         function Config($routeProvider) {
             console.log('I am in config constructor.');
             $routeProvider.when('/', {
-                template: 'views/home/home.tpl.html'
+                templateUrl: 'partials/home/home.tpl.html'
             });
         }
         return Config;

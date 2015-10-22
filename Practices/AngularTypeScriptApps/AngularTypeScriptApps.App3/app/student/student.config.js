@@ -4,7 +4,7 @@ var App;
         function StudentConfig($routeProvider) {
             $routeProvider
                 .when('/student-list', {
-                templateUrl: 'views/student/student-list/student-list.tpl.html',
+                templateUrl: 'partials/student/student-list/student-list.tpl.html',
                 controller: 'StudentListController',
                 controllerAs: 'vm'
             });

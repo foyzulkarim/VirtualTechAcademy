@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Content/ng-grid.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div ng-view></div>
+
+
+
+    <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        -->
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+
+    <!-- ============app scripts start from here================== -->
+    <script src="app/app.js"></script>
+    <script src="app/student/student.config.js"></script>
+
+    <script src="app/student/student-list/student-list.controller.js"></script>
+    <script src="app/student/student-list/student-list.service.js"></script>
+    <!-- ============app scripts end============================= -->
+    <!-- inject:js -->
+    <!-- endinject -->
+
+</body>
+</html>
