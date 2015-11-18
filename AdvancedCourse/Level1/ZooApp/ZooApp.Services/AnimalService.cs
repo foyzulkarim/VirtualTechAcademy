@@ -10,10 +10,11 @@ namespace ZooApp.Services
 {
     public class AnimalService
     {
+        // create a db object
+        ZooContext db = new ZooContext();
+
         public List<ViewAnimal> GetAnimals()
         {
-            // create a db object
-            ZooContext db = new ZooContext();
             // fetch db.animal data
             // pulls all rows from table into RAM
             List<Animal> animals = db.Animals.ToList();
@@ -33,6 +34,26 @@ namespace ZooApp.Services
             }
             // return
             return viewAnimals;
+        }
+
+        public ViewAnimal GetAnimal(int id)
+        {
+            Animal animal = db.Animals.Find(id);
+            return new ViewAnimal()
+            {
+                Food = animal.Food,
+                Quantity = animal.Quantity,
+                Origin = animal.Origin,
+                Name = animal.Origin,
+                Id = animal.Id
+            };
+        }
+
+        public bool Save(Animal animal)
+        {
+            Animal add = db.Animals.Add(animal);
+            db.SaveChanges();
+            return true;
         }
     }
 }
