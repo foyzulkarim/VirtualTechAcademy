@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,27 @@ namespace ZooApp.Services
             Animal add = db.Animals.Add(animal);
             db.SaveChanges();
             return true;
+        }
+
+        public bool Update(Animal animal)
+        {
+            db.Entry(animal).State = EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+
+
+        public bool Delete(Animal animal)
+        {
+            Animal dbAnimal = db.Animals.Find(animal.Id);
+            db.Animals.Remove(dbAnimal);
+            db.SaveChanges();
+            return true;
+        }
+
+        public Animal GetDbAnimal(int id)
+        {
+            return db.Animals.Find(id);
         }
     }
 }
