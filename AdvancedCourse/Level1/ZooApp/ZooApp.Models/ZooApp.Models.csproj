@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201511241730543_AnimalFood.Designer.cs">
       <DependentUpon>201511241730543_AnimalFood.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511241748195_AnimalFood1.cs" />
+    <Compile Include="Migrations\201511241748195_AnimalFood1.Designer.cs">
+      <DependentUpon>201511241748195_AnimalFood1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZooContext.cs" />
@@ -72,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511241730543_AnimalFood.resx">
       <DependentUpon>201511241730543_AnimalFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511241748195_AnimalFood1.resx">
+      <DependentUpon>201511241748195_AnimalFood1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
