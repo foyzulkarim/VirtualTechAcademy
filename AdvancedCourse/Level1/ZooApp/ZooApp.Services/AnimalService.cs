@@ -10,11 +10,10 @@ using ZooApp.ViewModels;
 namespace ZooApp.Services
 {
     public class AnimalService
-    {
-        // create a db object
+    {       
         ZooContext db = new ZooContext();
 
-        public List<ViewAnimal> GetAnimals()
+        public List<ViewAnimal> GetAll()
         {
             // fetch db.animal data
             // pulls all rows from table into RAM
@@ -23,29 +22,17 @@ namespace ZooApp.Services
             List<ViewAnimal> viewAnimals=new List<ViewAnimal>();
             foreach (Animal animal in animals)
             {
-                ViewAnimal viewAnimal = new ViewAnimal()
-                {
-                    Id = animal.Id,
-                 
-                    Origin = animal.Origin,
-                    
-                    Name = animal.Name
-                };
+                ViewAnimal viewAnimal = new ViewAnimal(animal);
                 viewAnimals.Add(viewAnimal);
             }
             // return
             return viewAnimals;
         }
 
-        public ViewAnimal GetAnimal(int id)
+        public ViewAnimal Get(int id)
         {
             Animal animal = db.Animals.Find(id);
-            return new ViewAnimal()
-            {             
-                Origin = animal.Origin,
-                Name = animal.Origin,
-                Id = animal.Id
-            };
+            return new ViewAnimal(animal);
         }
 
         public bool Save(Animal animal)
@@ -62,7 +49,6 @@ namespace ZooApp.Services
             return true;
         }
 
-
         public bool Delete(Animal animal)
         {
             Animal dbAnimal = db.Animals.Find(animal.Id);
@@ -71,7 +57,7 @@ namespace ZooApp.Services
             return true;
         }
 
-        public Animal GetDbAnimal(int id)
+        public Animal GetDbModel(int id)
         {
             return db.Animals.Find(id);
         }

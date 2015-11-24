@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animal.cs" />
+    <Compile Include="AnimalFood.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Migrations\201511171716316_InitialCreate.cs" />
     <Compile Include="Migrations\201511171716316_InitialCreate.Designer.cs">
       <DependentUpon>201511171716316_InitialCreate.cs</DependentUpon>

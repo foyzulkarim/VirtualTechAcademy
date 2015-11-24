@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZooApp.ViewModels.ViewAnimal>
+﻿@model IEnumerable<ZooApp.ViewModels.ViewFood>
 
 @{
     ViewBag.Title = "Index";
@@ -14,12 +14,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Origin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
         <th></th>
     </tr>
 
@@ -27,12 +21,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Origin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

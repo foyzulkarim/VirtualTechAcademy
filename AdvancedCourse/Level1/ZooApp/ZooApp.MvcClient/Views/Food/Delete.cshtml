@@ -1,4 +1,4 @@
-﻿@model ZooApp.Models.Animal
+﻿@model ZooApp.Models.Food
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Animal</h4>
+    <h4>Food</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,22 +17,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Origin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Origin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
     </dl>
