@@ -26,9 +26,9 @@ namespace ZooApp.Services
                 ViewAnimal viewAnimal = new ViewAnimal()
                 {
                     Id = animal.Id,
-                    Quantity = animal.Quantity,
+                 
                     Origin = animal.Origin,
-                    Food = animal.Food,
+                    
                     Name = animal.Name
                 };
                 viewAnimals.Add(viewAnimal);
@@ -41,9 +41,7 @@ namespace ZooApp.Services
         {
             Animal animal = db.Animals.Find(id);
             return new ViewAnimal()
-            {
-                Food = animal.Food,
-                Quantity = animal.Quantity,
+            {             
                 Origin = animal.Origin,
                 Name = animal.Origin,
                 Id = animal.Id
