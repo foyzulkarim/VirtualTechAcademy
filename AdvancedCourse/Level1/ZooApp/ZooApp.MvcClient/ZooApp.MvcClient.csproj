@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Animal1Controller.cs" />
+    <Compile Include="Controllers\AnimalFoodsController.cs" />
     <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -195,6 +196,11 @@
     <Content Include="Views\Animal1\Create.cshtml" />
     <Content Include="Views\Animal1\Edit.cshtml" />
     <Content Include="Views\Animal1\Delete.cshtml" />
+    <Content Include="Views\AnimalFoods\Create.cshtml" />
+    <Content Include="Views\AnimalFoods\Delete.cshtml" />
+    <Content Include="Views\AnimalFoods\Details.cshtml" />
+    <Content Include="Views\AnimalFoods\Edit.cshtml" />
+    <Content Include="Views\AnimalFoods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
