@@ -37,12 +37,10 @@ namespace ZooApp.Models.Migrations
             CreateIndex("dbo.Animals", "Name", name: "Ix_AnimalName");
             CreateIndex("dbo.Animals", "Origin", name: "Ix_AnimalOrigin");
             DropColumn("dbo.Animals", "Food");
-            DropColumn("dbo.Animals", "Quantity");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Animals", "Quantity", c => c.Int(nullable: false));
             AddColumn("dbo.Animals", "Food", c => c.String());
             DropForeignKey("dbo.AnimalFoods", "FoodId", "dbo.Foods");
             DropForeignKey("dbo.AnimalFoods", "AnimalId", "dbo.Animals");
