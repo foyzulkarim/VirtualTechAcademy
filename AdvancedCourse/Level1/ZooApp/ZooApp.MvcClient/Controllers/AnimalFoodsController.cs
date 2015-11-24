@@ -6,20 +6,27 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using ZooApp.Models;
+using ZooApp.Services;
+using ZooApp.ViewModels;
 
 namespace ZooApp.MvcClient.Controllers
 {
     public class AnimalFoodsController : Controller
     {
         private ZooContext db = new ZooContext();
+        AnimalFoodService service = new AnimalFoodService();
 
         // GET: AnimalFoods
         public ActionResult Index()
         {
-            var animalFoods = db.AnimalFoods.Include(a => a.Animal).Include(a => a.Food);
-            return View(animalFoods.ToList());
+            var result = service.GetViewFoodTotals();
+            ViewBag.Total = result.Sum(x => x.TotalPrice);
+            return View(result);
         }
+
+        
 
         // GET: AnimalFoods/Details/5
         public ActionResult Details(int? id)

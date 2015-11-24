@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZooApp.Models.AnimalFood>
+﻿@model IEnumerable<ZooApp.ViewModels.ViewFoodTotal>
 
 @{
     ViewBag.Title = "Index";
@@ -12,34 +12,43 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Animal.Name)
+            @Html.DisplayNameFor(model => model.FoodName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Food.Name)
+            @Html.DisplayNameFor(model => model.FoodPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            @Html.DisplayNameFor(model => model.TotalQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Animal.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Food.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
+                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+                @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+            </td>
+        </tr>
+    }
 
 </table>
+
+<h3>Total: @ViewBag.Total</h3>

@@ -8,7 +8,11 @@ namespace ZooApp.ViewModels
         {
             Id = food.Id;
             Name = food.Name;
+            Price = food.Price;
         }
+
+        public double Price { get; set; }
+
         public int Id { get; set; }
         public string Name { get; set; }
     }

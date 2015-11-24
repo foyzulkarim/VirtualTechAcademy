@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZooApp.Models
@@ -16,7 +17,7 @@ namespace ZooApp.Models
         [Required]
         public int FoodId { get; set; }
         public virtual Food Food { get; set; }
-        [Required]
-        public int Quantity { get; set; }
+        [Required]        
+        public double Quantity { get; set; }
     }
 }
