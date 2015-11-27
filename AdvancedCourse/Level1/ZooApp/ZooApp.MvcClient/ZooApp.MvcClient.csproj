@@ -201,6 +201,7 @@
     <Content Include="Views\AnimalFoods\Details.cshtml" />
     <Content Include="Views\AnimalFoods\Edit.cshtml" />
     <Content Include="Views\AnimalFoods\Index.cshtml" />
+    <Content Include="Views\AnimalFoods\IndexDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

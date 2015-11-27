@@ -20,7 +20,13 @@ namespace ZooApp.ViewModels
             FoodPrice = animalFood.Food.Price; // 10
             TotalQuantity = animalFood.Animal.Quantity*animalFood.Quantity;// 3 * 3 = 9
             TotalPrice = FoodPrice * TotalQuantity;
+            Id = animalFood.Id;
+            FoodId = animalFood.FoodId;
         }
+
+        public int Id { get; set; }
+
+        public int FoodId { get; set; }
 
         public double TotalPrice { get; set; } // OOP Concept. 
 

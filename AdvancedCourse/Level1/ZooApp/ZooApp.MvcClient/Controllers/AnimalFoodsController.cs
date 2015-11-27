@@ -26,7 +26,12 @@ namespace ZooApp.MvcClient.Controllers
             return View(result);
         }
 
-        
+        public ActionResult IndexDetail(int id)
+        {
+            var foodTotals = service.GetViewFoodTotalsByFood(id);
+            ViewBag.Total = foodTotals.Sum(x => x.TotalPrice);
+            return View(foodTotals);
+        }
 
         // GET: AnimalFoods/Details/5
         public ActionResult Details(int? id)

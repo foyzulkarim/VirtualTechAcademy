@@ -14,31 +14,34 @@ namespace ZooApp.Services
 
         public List<ViewFoodTotal> GetViewFoodTotals()
         {
-            var animalFoods = db.AnimalFoods.ToList();
-            List<ViewFoodTotal> totals = new List<ViewFoodTotal>();
-
-            foreach (AnimalFood animalFood in animalFoods)
-            {
-                ViewFoodTotal foodTotal = new ViewFoodTotal(animalFood);
-                totals.Add(foodTotal);
-            }
-            List<ViewFoodTotal> result = new List<ViewFoodTotal>();
-
-            var groupBy = totals.GroupBy(x => x.FoodName);
-            foreach (IGrouping<string, ViewFoodTotal> foodTotals in groupBy)
-            {
-                double totalPrice = foodTotals.Sum(x => x.TotalPrice);
-                double totalQuantity = foodTotals.Sum(x => x.TotalQuantity);
-                ViewFoodTotal foodTotal = new ViewFoodTotal()
+            IQueryable<IGrouping<int, AnimalFood>> animalFoodGroups = db.AnimalFoods.GroupBy(x => x.FoodId);
+            IQueryable<ViewFoodTotal> foodTotals =
+                from foodGroup in animalFoodGroups
+                let totalQuantity = foodGroup.Sum(x => x.Animal.Quantity*x.Quantity)
+                let food = foodGroup.FirstOrDefault()
+                select new ViewFoodTotal()
                 {
-                    FoodName = foodTotals.Key,
-                    FoodPrice = foodTotals.First().FoodPrice,
-                    TotalPrice = totalPrice,
-                    TotalQuantity = totalQuantity
+                    FoodPrice = food.Food.Price,
+                    FoodName = food.Food.Name,
+                    TotalQuantity = totalQuantity,
+                    TotalPrice = totalQuantity*food.Food.Price,
+                    Id = food.Id,
+                    FoodId = food.FoodId
                 };
-                result.Add(foodTotal);
-            }
-            return result;
+            return foodTotals.ToList();
+        }
+
+        public List<ViewFoodAnimalTotal> GetViewFoodTotalsByFood(int foodId)
+        {
+            IQueryable<AnimalFood> animalFoods = db.AnimalFoods.Where(x=>x.FoodId==foodId);
+            var totals = animalFoods.Select(animalFood => new ViewFoodAnimalTotal()
+            {
+                Id = animalFood.Id,
+                AnimalName = animalFood.Animal.Name,
+                TotalQuantity = animalFood.Quantity*animalFood.Animal.Quantity,
+                TotalPrice = animalFood.Quantity*animalFood.Animal.Quantity*animalFood.Food.Price,
+            }).ToList();
+            return totals;
         }
     }
 }
