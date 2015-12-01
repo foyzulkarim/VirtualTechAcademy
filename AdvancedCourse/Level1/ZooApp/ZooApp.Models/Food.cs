@@ -11,7 +11,7 @@ namespace ZooApp.Models
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
-        [Index("Ix_FoodName")]
+        [Index("Ix_FoodName",1 , IsUnique = true)]
         public string Name { get; set; }
 
         [Required]

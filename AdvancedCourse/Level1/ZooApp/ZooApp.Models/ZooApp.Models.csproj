@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201511241836118_AddFoodPrice.Designer.cs">
       <DependentUpon>201511241836118_AddFoodPrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512010320493_AnimalFoodUniqueNameAdded.cs" />
+    <Compile Include="Migrations\201512010320493_AnimalFoodUniqueNameAdded.Designer.cs">
+      <DependentUpon>201512010320493_AnimalFoodUniqueNameAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZooContext.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511241836118_AddFoodPrice.resx">
       <DependentUpon>201511241836118_AddFoodPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512010320493_AnimalFoodUniqueNameAdded.resx">
+      <DependentUpon>201512010320493_AnimalFoodUniqueNameAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

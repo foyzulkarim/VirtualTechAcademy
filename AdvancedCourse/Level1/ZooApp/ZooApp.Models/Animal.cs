@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace ZooApp.Models
 {
-    public class Animal
+    public partial class Animal
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
-        [Index("Ix_AnimalName")]
+        [Index("Ix_AnimalName", 1, IsUnique = true)]
         public string Name { get; set; }
         [Required]
         [StringLength(50)]
@@ -24,5 +24,21 @@ namespace ZooApp.Models
         [Required]
         public int Quantity { get; set; }
         public virtual ICollection<AnimalFood> AnimalFoods { get; set; }
+    }
+
+    public partial class Animal : IValidatableObject
+    {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {          
+            ZooContext db = new ZooContext();
+            Name = Name.ToUpper();
+            var dbModel = db.Animals.FirstOrDefault(x => x.Name.ToUpper() == Name);
+            if (dbModel!=null)
+            {
+                ValidationResult error = new ValidationResult("Name already exists", new[] {"Name"});
+                yield return error;
+            }
+         
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace ZooApp.Services
         }
 
         public bool Save(Animal animal)
-        {
+        {           
             Animal add = db.Animals.Add(animal);
             db.SaveChanges();
             return true;

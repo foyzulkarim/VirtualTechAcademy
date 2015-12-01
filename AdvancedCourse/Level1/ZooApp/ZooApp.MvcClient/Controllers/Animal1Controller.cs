@@ -36,8 +36,12 @@ namespace ZooApp.MvcClient.Controllers
         public ActionResult Create(Animal animal)
         {
             // save 
-            bool saved = service.Save(animal);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                bool saved = service.Save(animal);
+                return RedirectToAction("Index");
+            }
+            return View(animal);
         }
 
         [HttpGet]
