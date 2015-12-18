@@ -52,5 +52,14 @@ namespace MvcAppEmpty.Controllers
             return View(model);
 
         }
+
+        [Authorize]
+        public ActionResult LogOut()
+        {
+            IOwinContext context = Request.GetOwinContext();
+            IAuthenticationManager manager = context.Authentication;
+            manager.SignOut();
+            return Redirect("/");
+        }
     }
 }
