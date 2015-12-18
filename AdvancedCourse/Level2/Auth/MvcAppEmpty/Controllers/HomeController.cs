@@ -11,6 +11,9 @@ namespace MvcAppEmpty.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            string name = User.Identity.Name;
+            var browser = Request.Browser;
+            ViewBag.message = "Hello " + name + ". You have requested from " + browser.Browser;
             return View();
         }
 
