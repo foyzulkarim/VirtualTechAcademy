@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Virtual Tech Academy Zoo Management System</h1>
+    <p class="lead">Zoo Management System is a pet project to understand the Entity Framework Code First and ASP.NET Identity</p>    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2> <button class="btn btn-default">@Html.ActionLink("Manage Animals", "Index", "Animal1") &raquo;</button> </h2>
+    </div>
+    <div class="col-md-4">
+        <h2> <button class="btn btn-default">@Html.ActionLink("Manage Foods", "Index", "Food") &raquo;</button> </h2>
+    </div>
+    <div class="col-md-4">
+        <h2> <button class="btn btn-default">@Html.ActionLink("Manage Animal Foods", "Index", "AnimalFoods") &raquo;</button> </h2>
+    </div>
+</div>
