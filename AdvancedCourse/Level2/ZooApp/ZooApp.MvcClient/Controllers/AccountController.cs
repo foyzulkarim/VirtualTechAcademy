@@ -69,6 +69,13 @@ namespace ZooApp.MvcClient.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
-        }        
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
+            return Redirect("/");
+        }
     }
 }

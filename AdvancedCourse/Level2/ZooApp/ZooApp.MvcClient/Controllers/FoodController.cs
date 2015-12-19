@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using ZooApp.Models;
 using ZooApp.Services;
 using ZooApp.ViewModels;
 
 namespace ZooApp.MvcClient.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class FoodController : Controller
     {
         FoodService service = new FoodService();

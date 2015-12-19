@@ -9,6 +9,7 @@ using ZooApp.ViewModels;
 
 namespace ZooApp.MvcClient.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class Animal1Controller : Controller
     {
         AnimalService service = new AnimalService();

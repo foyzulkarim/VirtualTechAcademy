@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using ZooApp.MvcClient.Filters;
 
 namespace ZooApp.MvcClient
 {
@@ -9,6 +10,7 @@ namespace ZooApp.MvcClient
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute()); // whole app will require cookie / authenticated request
+            filters.Add(new CustomAuthzAttribute());
         }
     }
 }

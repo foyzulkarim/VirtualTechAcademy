@@ -13,6 +13,7 @@ using ZooApp.ViewModels;
 
 namespace ZooApp.MvcClient.Controllers
 {
+    [Authorize(Roles = "Admin,User")]
     public class AnimalFoodsController : Controller
     {
         private ZooContext db = new ZooContext();
